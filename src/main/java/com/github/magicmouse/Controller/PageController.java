@@ -13,11 +13,6 @@ public class PageController {
         return "default";
     }
 
-    @RequestMapping(value = "/todo")
-    public String todoPage(){
-
-        return "todo";
-    }
 
 
 }
