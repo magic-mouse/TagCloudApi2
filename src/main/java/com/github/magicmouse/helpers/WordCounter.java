@@ -21,11 +21,13 @@ public class WordCounter {
     }
 
     public List<Word> getWordList() {
-        Collections.sort(wordList);
+        //Collections.sort(wordList);
         return wordList;
     }
 
     public void countWord(String word) {
+
+        if (quickFilter(word)) return;
 
         Word word1 = wordList.stream()
                 .filter(filteredWord ->
@@ -45,6 +47,22 @@ public class WordCounter {
         }
 
 
+    }
+
+    private boolean quickFilter(String word) {
+        if(word.equals("RT")){
+            return true;
+        }
+        if(word.contains("@")){
+            return true;
+        }
+        if(word.contains("#")){
+            return true;
+        }
+        if(word.toLowerCase().contains("http")){
+            return true;
+        }
+        return false;
     }
 
     @Override

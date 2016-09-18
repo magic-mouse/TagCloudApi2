@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping("/api")
 public class RssController {
 
 
 
-    @RequestMapping("/api/rss")
+    @RequestMapping("/rss")
     public RssModel greeting(@RequestParam(value="q") String query) {
         return new RssModel(query);
     }
