@@ -1,6 +1,8 @@
 # TagCloudApi2
 TagCloudApi
 
+![image](/dd5aaa8b-25f1-4755-afe3-39e41bdb2678.jpg)
+
 * Make sure that Java 1.8 and Maven is installed correctly
 * Clone or download the repo from github!
 * Go to http://dev.twitter.com
