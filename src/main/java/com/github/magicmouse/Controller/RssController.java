@@ -6,8 +6,10 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import  com.sun.syndication.io.XmlReader;
@@ -35,8 +37,7 @@ public class RssController {
         try {
             url = new URL(query);
         }catch(MalformedURLException e){
-            e.printStackTrace();
-            return null;
+            throw new BadInputUrlException();
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -69,5 +70,11 @@ public class RssController {
         }
 
         return wordCounter.getWordList();
+    }
+
+
+    @ResponseStatus(value= HttpStatus.BAD_REQUEST, reason="Bad request, input invalid")  // 404
+    public class BadInputUrlException extends RuntimeException {
+
     }
 }

@@ -25,7 +25,10 @@ angular.module('cloud', ['ngTagCloud'])
                 function(data){
                     $scope.word_cloud = data.data;
                 },
-                function(data,error){
+                function(error){
+                    // would never have used alert on a real product,
+                    // i would have made a nice warning box with twitter-bootstrap
+                    alert(error.data.message);
                 }
             );
         }
