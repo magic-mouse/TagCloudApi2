@@ -13,6 +13,18 @@ public class PageController {
         return "default";
     }
 
+    @RequestMapping(value = "/twitter")
+    public String tweetPage(){
+
+        return "tweet";
+    }
+
+    @RequestMapping(value = "/rss")
+    public String rssPage(){
+
+        return "rss";
+    }
+
 
 
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" ng-app="cloud">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- <script src="angular.min.js" type="javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="/ng-tag-cloud.js"></script>
+    <script src="/ngCloud.js"></script>
+
+
+    <link href="/css/ng-tag-cloud.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-controller="rss_cloud">
+
+<form>
+    <fieldset>
+        <legend>Tag Cloud</legend>
+        <input type="text" placeholder="http://..." id="hashtag" ng-model="website"/>
+        <input type="button" value="make cloud" ng-click="generateCloud()"/>
+    </fieldset>
+</form>
+
+<ng-tag-cloud cloud-width="512" cloud-height="128" cloud-data="word_cloud"></ng-tag-cloud>
+
+</body>
+</html>

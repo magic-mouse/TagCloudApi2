@@ -3,6 +3,7 @@ package com.github.magicmouse.helpers;
 import com.github.magicmouse.Models.Word;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,8 +22,11 @@ public class WordCounter {
     }
 
     public List<Word> getWordList() {
-        //Collections.sort(wordList);
-        return wordList;
+        // Sorting
+        Collections.sort(wordList);
+        // Take top 100 words or if there is less, take what we got
+        List<Word> words = new ArrayList<>(wordList.subList(0, (wordList.size() > 100) ? 100 : wordList.size()));
+        return words;
     }
 
     public void countWord(String word) {
@@ -32,7 +36,7 @@ public class WordCounter {
         Word word1 = wordList.stream()
                 .filter(filteredWord ->
                 {
-                   if(word.equals(filteredWord.getWord())){
+                   if(word.equals(filteredWord.getText())){
                        filteredWord.stepCount();
                        return true;
                    }
@@ -41,15 +45,29 @@ public class WordCounter {
 
         if(word1 == null) {
             Word word2 = new Word();
-            word2.setWord(word);
-            word2.setCount(1);
+            word2.setText(word);
+            word2.setWeight(1);
             wordList.add(word2);
         }
 
 
     }
 
+    /**
+     *
+     * Filters some of the common "non-essentials" from tweets like usernames, other hashtags and retweets.
+     *
+     * @param word
+     * @return
+     */
     private boolean quickFilter(String word) {
+        // This could be replaced by an array with contains, but i like the "step by step"
+        // String[] strings = new String[]{"RT", "@", "#"};
+        // System.out.println(Arrays.asList(strings).contains(word));
+
+        if(word.isEmpty()){
+            return true;
+        }
         if(word.equals("RT")){
             return true;
         }
