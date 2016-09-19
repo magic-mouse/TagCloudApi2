@@ -11,3 +11,10 @@ TagCloudApi
 * Open a command window, run mvn spring-boot:run, depending on your hardware it shoud take 2-5 seconds.
 * Enjoy the site on http://localhost:8080/
 
+# Deploy
+
+* Go to your command tool, in the project-root.
+* Make a mvn clean install
+* Go to /target
+* You can now run java -jar TagCloudApi-1.0-SNAPSHOT.jar
+* This will start up the server on most platforms.
